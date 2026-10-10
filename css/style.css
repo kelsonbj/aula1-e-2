@@ -1,9 +1,24 @@
 @charset "UTF-8";
+
+/* Tamanho dos títulos (h2): acompanha a largura da tela,
+   mas nunca fica menor que 1.8rem nem maior que 2.6rem */
+:root
+{
+    --titulo: clamp(1.8rem, 1rem + 2.2vw, 2.6rem);
+}
+
 *
 {
-    margin: 0;  
+    margin: 0;
     padding: 0;
+    box-sizing: border-box; /* padding e borda passam a contar dentro da largura/altura */
     font-family: 'Times New Roman', Times, serif;
+}
+
+/* nenhuma imagem passa da largura do espaço onde está */
+img
+{
+    max-width: 100%;
 }
 
 /*corpo*/
@@ -16,7 +31,7 @@ body
 header
 {
     background-color: rgba(1, 70, 1, 0.699);
-    height: 100px;
+    min-height: 100px; /* era height: 100px, que não deixava o cabeçalho crescer */
     width: 100%;
     border-radius: 0 0 10px 10px;
     box-shadow: #153f32c5 0 10px 10px 0;
@@ -24,8 +39,8 @@ header
 
 header h1
 {
-    font-size: 2.8em;
-    color:aqua;
+    font-size: clamp(2.2rem, 4vw, 2.8rem);
+    color: aqua;
     text-align: justify;
     margin: 5px 2px 5px 15px;
 }
@@ -41,6 +56,7 @@ header h1
 {
     list-style: none;
     display: flex;
+    flex-wrap: wrap; /* se os links não couberem, quebram de linha */
     text-align: center;
     margin: 20px;
 }
@@ -50,75 +66,84 @@ header h1
     margin-left: 10px;
     color: aquamarine;
     text-decoration: none;
-    padding: auto;
     padding-right: 10px;
 }
 
 #menu a:hover
 {
-    color:white;
+    color: white;
 }
 
 /*conteudo*/
+/* O #hero é uma grade de 2 colunas:
+   coluna 1 = "Quem somos" + texto do hero | coluna 2 = imagem.
+   Sem altura fixa e sem margens negativas: o que cresce empurra o resto, nada se sobrepõe. */
 #hero
 {
+    display: grid;
+    grid-template-columns: minmax(0, 4fr) minmax(0, 5fr);
+    column-gap: 20px;
+    align-items: center;
+    padding: 0 20px;
     background-color: rgba(1, 70, 1, 0.699);
     margin: 20px;
     border-radius: 20px;
     box-shadow: #153f32c5 0 10px 10px 0;
-
 }
 
 #inicio
 {
-    width: 70%;
-    height: 100px;
-    margin-bottom: 25px;
-    align-items: center;
+    grid-column: 1;
+    grid-row: 1;
+    width: 100%;
+    max-width: 650px;
+    justify-self: center;
 }
 
 #inicio h2
 {
-    color:aqua;
-    font-size: 2.6em;
+    color: aqua;
+    font-size: var(--titulo);
     text-align: center;
-    margin-left: -40%;
     padding-top: 30px;
-
 }
 
 #inicio p
 {
-    padding-right: 40%;
     margin-top: 20px;
-    margin-left: 30px;
     margin-bottom: 50px;
     text-align: justify;
     font-size: 1.2em;
 }
 
+/* #conteudo "desaparece" da estrutura: o texto e a imagem dentro dele
+   passam a ser itens da grade do #hero */
 #conteudo
 {
-    display: flex;
-    margin-top: 60px;
-    align-items: center;
-    justify-content: space-around;
+    display: contents;
+}
+
+#conteudo section
+{
+    grid-column: 1;
+    grid-row: 2;
+    width: 100%;
+    max-width: 700px;
+    justify-self: center;
+    margin-bottom: 40px;
+    text-align: center;
 }
 
 #conteudo h2
 {
-    color:aqua;
-    font-size: 2.6em;
+    color: aqua;
+    font-size: var(--titulo);
     text-align: center;
-    margin-left: 10%;
-    padding-top: 30px;
 }
 
 #conteudo p
 {
-    padding-right: 20%;
     margin-top: 20px;
-    margin-left: 30px;
     margin-bottom: 50px;
     text-align: justify;
     font-size: 1.2em;
@@ -126,26 +151,31 @@ header h1
 
 #conteudo img
 {
-    width: 800px;
-    height: 600px;
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    align-self: end;
+    justify-self: center;
+    width: 100%;
+    max-width: 800px;
+    aspect-ratio: 4 / 3; /* mantém a proporção 800x600 em qualquer largura */
+    height: auto;
+    object-fit: contain;
     border-radius: 10px;
+    transition: transform 0.3s ease;
 }
 
 #conteudo img:hover
 {
     transform: scale(1.05);
-    transition: transform 0.3s ease;    
 }
 
 #bnt1
 {
-    margin-left: 25%;
     background: transparent;
     width: 100px;
     height: 60px;
-    border: none;
-    border-radius: 10px;
     border: 1px solid;
+    border-radius: 10px;
     font-size: 1.2em;
 }
 
@@ -163,7 +193,6 @@ header h1
     height: 60px;
     border: 1px solid;
     border-radius: 10px;
-    font-size: 0.9em;
     color: white;
     font-size: 1.2em;
 }
@@ -172,13 +201,15 @@ header h1
 {
     background-color: white;
     color: black;
-
 }
 
 /*produto*/
 #produto
 {
     display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
     background-color: rgba(1, 70, 1, 0.699);
     margin: 20px;
     border-radius: 20px;
@@ -188,13 +219,12 @@ header h1
 
 #conteudo2
 {
-   margin: 40px 30px;
-   width: 400px;
-   height: 300px;
-   background-color: cyan;
-   border-radius: 25px;
-   margin-left: 50px;
-   box-shadow: #153f32c5 10px 10px 10px 5px;
+    flex: 0 1 clamp(280px, 30vw, 400px); /* até 400px, mas encolhe em telas menores */
+    min-height: 300px;
+    margin: 40px 30px 40px 50px;
+    background-color: cyan;
+    border-radius: 25px;
+    box-shadow: #153f32c5 10px 10px 10px 5px;
 }
 
 #conteudo2 h2
@@ -209,7 +239,7 @@ header h1
 {
     font-size: 1.2em;
     text-align: justify;
-    margin: 10px;;
+    margin: 10px;
 }
 
 #conteudo2 button
@@ -230,36 +260,50 @@ header h1
     color: white;
 }
 
+/* os cards quebram de linha sozinhos quando não cabem (flex-wrap) */
 #anuncio
 {
+    flex: 1 1 0;
+    min-width: 0;
+    max-width: 1000px;
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-around;
-    margin-top: 5%;
 }
 
 .produto
 {
+    flex: 1 1 140px;
+    max-width: 250px;
     background-color: aquamarine;
-    margin: 10px 30px;
+    margin: 10px 15px;
     border-radius: 20px;
-    padding: 0;
-    width: 250px;
-    height: 240px;
+    padding: 0 0 12px;
     text-align: center;
     box-shadow: #153f32c5 10px 10px 10px 5px;
+    transition: transform 0.3s ease;
 }
 
 .produto:hover
 {
     transform: scale(1.05);
-    transition: transform 0.3s ease;
 }
 
 .produto img
 {
-    width: 200px;
-    height: 180px;
+    display: block;
+    margin: 0 auto;
+    width: 80%;
+    max-width: 200px;
+    aspect-ratio: 10 / 9; /* proporção 200x180 */
+    height: auto;
+    object-fit: contain;
     padding: 0;
+}
+
+.produto h2
+{
+    font-size: clamp(1rem, 0.2rem + 1.5vw, 1.5rem);
 }
 
 /*visual*/
@@ -267,58 +311,59 @@ header h1
 #visual
 {
     display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(30px, 6vw, 100px);
     margin: 5px 5px 0 5px;
+    padding: 20px 20px 30px;
 }
+
+#visual > div:first-child
+{
+    flex: 0 1 400px;
+}
+
 #visual div img
 {
-    width: 400px;
-    height: 500px;
-    margin-left: 19%;
-    margin-bottom: 30px;
+    display: block;
+    width: 100%;
+    aspect-ratio: 4 / 5; /* proporção 400x500 */
+    height: auto;
+    object-fit: cover;
     border-radius: 20px;
+    transition: transform 0.3s ease;
 }
 
 #visual div img:hover
 {
     transform: scale(1.05);
-    transition: transform 0.3s ease;    
 }
 
 #texto
 {
-    margin: 20px;
-    margin-left: 100px;
+    flex: 1 1 0;
+    max-width: 640px;
 }
 
 #texto h2
 {
-    color:aqua;
-    font-size: 2.6em;
+    color: aqua;
+    font-size: var(--titulo);
     text-align: center;
-    margin-left: -10%;
-    padding-top: 15%;
-
 }
 
 #texto p
 {
-    padding: 20%;
-    padding-top: 0;
-    padding-bottom: 0;
     margin-top: 20px;
-    margin-left: -10%;
     text-align: justify;
     font-size: 1.2em;
 }
 
 #texto button
 {
-    padding: 20px;
-    padding-top: 0;
-    padding-bottom: 0;
-    margin-top: 20px;
-    margin-left: 40%;
-    margin-bottom: 50px;
+    display: block;
+    padding: 0 20px;
+    margin: 20px auto 50px;
     font-size: 1.2em;
     background: transparent;
     border-radius: 20px;
@@ -329,5 +374,174 @@ header h1
 {
     border: 1px solid;
     background-color: rgb(0, 51, 51);
-    color: white;   
+    color: white;
+}
+
+/* --- RESPONSIVIDADE (MEDIA QUERIES) --- */
+
+/* Telas médias (até 1100px): a coluna de texto do hero ficaria estreita demais,
+   então o hero vira uma coluna só, na ordem do HTML (Quem somos > texto > imagem) */
+@media (max-width: 1100px)
+{
+    #hero
+    {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    #inicio,
+    #conteudo section,
+    #conteudo img
+    {
+        grid-column: auto;
+        grid-row: auto;
+    }
+
+    #inicio,
+    #conteudo section
+    {
+        max-width: 720px;
+    }
+
+    #conteudo img
+    {
+        max-width: 560px;
+    }
+}
+
+/* Tablets e celulares (até 992px): menu, produtos e "why choose us" em coluna */
+@media (max-width: 992px)
+{
+    /* Menu */
+    header
+    {
+        padding-bottom: 10px;
+    }
+
+    #menu
+    {
+        flex-direction: column;
+        align-items: center;
+        padding-top: 10px;
+    }
+
+    header h1
+    {
+        margin: 5px 0;
+        text-align: center;
+    }
+
+    #menu ul
+    {
+        margin: 5px 0;
+        justify-content: center;
+    }
+
+    #menu a
+    {
+        display: inline-block;
+        margin-left: 0;
+        padding: 8px 12px; /* área de toque maior */
+    }
+
+    /* Produtos: o card de texto fica em cima, os produtos embaixo */
+    #produto
+    {
+        flex-direction: column;
+        gap: 0;
+        padding: 20px;
+    }
+
+    #conteudo2
+    {
+        flex: 0 0 auto;
+        width: 100%;
+        max-width: 560px;
+        min-height: 0;
+        margin: 0 0 20px;
+        padding-bottom: 20px;
+    }
+
+    #anuncio
+    {
+        flex: 0 0 auto;
+        width: 100%;
+        max-width: none;
+    }
+
+    /* Why choose us */
+    #visual
+    {
+        flex-direction: column;
+    }
+
+    #visual > div:first-child
+    {
+        flex: 0 0 auto;
+        width: 100%;
+        max-width: 350px;
+    }
+
+    #texto
+    {
+        flex: 0 0 auto;
+        width: 100%;
+    }
+
+    #texto button
+    {
+        padding: 10px 24px;
+    }
+}
+
+/* Celulares (até 600px) */
+@media (max-width: 600px)
+{
+    #hero,
+    #produto
+    {
+        margin: 12px;
+    }
+
+    #hero
+    {
+        padding: 0 16px;
+    }
+
+    #produto
+    {
+        padding: 16px;
+    }
+
+    #inicio h2
+    {
+        padding-top: 20px;
+    }
+
+    /* texto justificado em coluna estreita fica cheio de buracos */
+    #inicio p,
+    #conteudo p,
+    #conteudo2 p,
+    #texto p
+    {
+        text-align: left;
+        font-size: 1.1em;
+    }
+
+    #menu a
+    {
+        font-size: 1.05em;
+        padding: 8px;
+    }
+
+    /* um produto por linha */
+    .produto
+    {
+        flex: 0 1 100%;
+        max-width: 280px;
+    }
+
+    #visual
+    {
+        padding: 15px 15px 25px;
+    }
 }
