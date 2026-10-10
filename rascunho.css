@@ -1,0 +1,347 @@
+/* =====================================================
+   VARIÁVEIS DO CARROSSEL
+===================================================== */
+
+:root {
+    /* Cores da primeira imagem */
+    --slide-1-bg: #eee3d5;
+    --slide-1-color: #38291f;
+    --slide-1-accent: #a66d42;
+
+    /* Cores da segunda imagem */
+    --slide-2-bg: #e1eae4;
+    --slide-2-color: #243b30;
+    --slide-2-accent: #527d63;
+
+    /* Cores da terceira imagem */
+    --slide-3-bg: #e8e0f0;
+    --slide-3-color: #352443;
+    --slide-3-accent: #8763a8;
+
+    /* Configurações da animação */
+    --slide-duration: 30s;
+    --transition-duration: 1.5s;
+}
+
+
+/* =====================================================
+   SECÇÃO PRINCIPAL
+===================================================== */
+
+.hero {
+    position: relative;
+    width: 100%;
+    min-height: 600px;
+    overflow: hidden;
+
+    background: var(--slide-1-bg);
+
+    transition:
+        background-color var(--transition-duration) ease;
+}
+
+
+/* =====================================================
+   ESTRUTURA DO CARROSSEL
+===================================================== */
+
+.carousel {
+    position: relative;
+    width: 100%;
+    min-height: 600px;
+}
+
+
+/* =====================================================
+   CADA SLIDE
+===================================================== */
+
+.carousel-item {
+    position: absolute;
+    inset: 0;
+
+    display: flex;
+    align-items: center;
+
+    width: 100%;
+    min-height: 600px;
+
+    padding: 60px 8%;
+
+    opacity: 0;
+    visibility: hidden;
+
+    animation-name: carousel-animation;
+    animation-duration: var(--slide-duration);
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+
+    transition:
+        opacity var(--transition-duration) ease,
+        visibility var(--transition-duration) ease;
+}
+
+
+/* =====================================================
+   IMAGENS
+===================================================== */
+
+.carousel-item img {
+    position: absolute;
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center;
+
+    z-index: 0;
+}
+
+
+/* Escurece ligeiramente a imagem para melhorar a leitura */
+.carousel-item::after {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    z-index: 1;
+
+    background: linear-gradient(
+        90deg,
+        rgba(0, 0, 0, 0.60) 0%,
+        rgba(0, 0, 0, 0.25) 55%,
+        rgba(0, 0, 0, 0.05) 100%
+    );
+}
+
+
+/* =====================================================
+   CONTEÚDO SOBRE A IMAGEM
+===================================================== */
+
+.carousel-content {
+    position: relative;
+    z-index: 2;
+
+    width: min(550px, 100%);
+
+    color: #ffffff;
+}
+
+.carousel-content h2 {
+    max-width: 550px;
+
+    margin-bottom: 20px;
+
+    font-size: clamp(2rem, 5vw, 4rem);
+    line-height: 1.1;
+
+    font-weight: 700;
+}
+
+.carousel-content p {
+    max-width: 450px;
+
+    margin-bottom: 30px;
+
+    font-size: 1.1rem;
+    line-height: 1.7;
+}
+
+
+/* =====================================================
+   BOTÃO
+===================================================== */
+
+.carousel-content .btn {
+    display: inline-block;
+
+    padding: 14px 28px;
+
+    border-radius: 6px;
+
+    background: var(--slide-1-accent);
+    color: #ffffff;
+
+    font-size: 1rem;
+    font-weight: 600;
+
+    text-decoration: none;
+
+    transition:
+        background-color 0.3s ease,
+        transform 0.3s ease;
+}
+
+.carousel-content .btn:hover {
+    transform: translateY(-3px);
+}
+
+
+/* =====================================================
+   TEMPO DE CADA IMAGEM
+===================================================== */
+
+/* Primeira imagem: 0 a 10 segundos */
+.slide-1 {
+    animation-delay: 0s;
+}
+
+/* Segunda imagem: 10 a 20 segundos */
+.slide-2 {
+    animation-delay: 10s;
+}
+
+/* Terceira imagem: 20 a 30 segundos */
+.slide-3 {
+    animation-delay: 20s;
+}
+
+
+/* =====================================================
+   ANIMAÇÃO DE ENTRADA E SAÍDA
+===================================================== */
+
+@keyframes carousel-animation {
+
+    /* Slide escondido no início */
+    0% {
+        opacity: 0;
+        visibility: hidden;
+    }
+
+    /* Aparece gradualmente */
+    4% {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    /* Continua visível */
+    29% {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    /* Desaparece gradualmente */
+    33.33% {
+        opacity: 0;
+        visibility: hidden;
+    }
+
+    /* Permanece escondido até ao próximo ciclo */
+    100% {
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
+
+/* =====================================================
+   RESPONSIVIDADE PARA TELEMÓVEIS
+===================================================== */
+
+@media (max-width: 768px) {
+
+    .hero,
+    .carousel,
+    .carousel-item {
+        min-height: 500px;
+    }
+
+    .carousel-item {
+        padding: 35px 6%;
+    }
+
+    .carousel-item img {
+        object-position: center;
+    }
+
+    .carousel-item::after {
+        background: linear-gradient(
+            0deg,
+            rgba(0, 0, 0, 0.75) 0%,
+            rgba(0, 0, 0, 0.25) 100%
+        );
+    }
+
+    .carousel-content {
+        width: 100%;
+        margin-top: 100px;
+    }
+
+    .carousel-content h2 {
+        font-size: clamp(2rem, 8vw, 3rem);
+    }
+
+    .carousel-content p {
+        font-size: 1rem;
+    }
+
+    .carousel-content .btn {
+        padding: 12px 20px;
+    }
+}
+
+
+/* =====================================================
+   TELEMÓVEIS PEQUENOS
+===================================================== */
+
+@media (max-width: 480px) {
+
+    .hero,
+    .carousel,
+    .carousel-item {
+        min-height: 450px;
+    }
+
+    .carousel-item {
+        padding: 25px 5%;
+    }
+
+    .carousel-content {
+        margin-top: 80px;
+    }
+
+    .carousel-content h2 {
+        font-size: 2rem;
+    }
+
+    .carousel-content p {
+        font-size: 0.9rem;
+        line-height: 1.6;
+    }
+}
+
+
+/* =====================================================
+   ACESSIBILIDADE
+===================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .carousel-item {
+        animation: none;
+    }
+
+    .slide-1 {
+        opacity: 1;
+        visibility: visible;
+    }
+
+}
+
+#formulario
+{
+    display: flex;
+}
+
+#formulario input, textarea
+{
+    width: 600px;
+    padding: 15px;
+    margin-bottom: 10px;
+}
