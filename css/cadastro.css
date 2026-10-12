@@ -1,0 +1,47 @@
+@charset "UTF-8";
+
+/* Tamanho dos títulos (h2): acompanha a largura da tela,
+   mas nunca fica menor que 1.8rem nem maior que 2.6rem */
+:root
+{
+    --titulo: clamp(1.8rem, 1rem + 2.2vw, 2.6rem);
+}
+
+*
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* padding e borda passam a contar dentro da largura/altura */
+    font-family: 'Times New Roman', Times, serif;
+}
+
+/* nenhuma imagem passa da largura do espaço onde está */
+img
+{
+    max-width: 100%;
+}
+
+/*corpo*/
+body
+{
+    background-color: #339878;
+}
+
+/*cabeçalho*/
+header
+{
+    background-color: rgba(1, 70, 1, 0.699);
+    min-height: 100px; /* era height: 100px, que não deixava o cabeçalho crescer */
+    width: 100%;
+    border-radius: 0 0 10px 10px;
+    box-shadow: #153f32c5 0 10px 10px 0;
+    
+}
+
+header h1
+{
+    font-size: clamp(2.2rem, 4vw, 2.8rem);
+    color: aqua;
+    text-align: justify;
+    margin: 5px 2px 5px 15px;
+}

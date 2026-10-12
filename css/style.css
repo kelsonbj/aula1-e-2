@@ -72,8 +72,14 @@ header h1
 #menu a:hover
 {
     color: white;
+    text-align: center;
 }
 
+#menu button 
+{
+    background: transparent;
+    border: none;
+}
 /*conteudo*/
 /* O #hero é uma grade de 2 colunas:
    coluna 1 = "Quem somos" + texto do hero | coluna 2 = imagem.
