@@ -223,7 +223,7 @@ header h1
     height: 20px;
 }
 
-#stock button
+#pes
 {
     background-color: black;
     color: aqua;
@@ -235,5 +235,39 @@ header h1
 
 #produto
 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+    margin: 10px;
+}
+.produto
+{
+    background-color: aliceblue;
+    border-radius: 10px;
+    text-align: center;
+    padding-bottom: 10px;
+}
 
+.produto img
+{
+    width: 100%;
+    height: auto;
+}
+
+.produto h2
+{
+    font-size: 1.2em;
+}
+
+.produto span
+{
+    font-size: 20px;
+    font-style: oblique;
+}
+
+.produto button
+{
+    border-radius: 25px;
+    border: none;
+    background: transparent;
 }
