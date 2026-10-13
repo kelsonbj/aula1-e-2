@@ -215,12 +215,16 @@ header h1
 {
     margin: 7% 0%;
     text-align: center;
+    background-color: aquamarine;
+    
 }
 
 #stock input
 {
     width: 400px;
-    height: 20px;
+    height: 40px;
+    font-size: 1.2em;
+    margin-top: 10px;
 }
 
 #pes

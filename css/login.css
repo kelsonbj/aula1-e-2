@@ -1,0 +1,162 @@
+@charset "UTF-8";
+
+*
+{
+    margin: 0;
+    padding: 0;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+/* nenhuma imagem passa da largura do espaço onde está */
+img
+{
+    max-width: 100%;
+}
+
+/*corpo*/
+body
+{
+    background-color: #339878;
+}
+
+/*cabeçalho*/
+header
+{
+    background-color: rgba(1, 70, 1, 0.699);
+    min-height: 100px; /* era height: 100px, que não deixava o cabeçalho crescer */
+    width: 100%;
+    border-radius: 0 0 10px 10px;
+    box-shadow: #153f32c5 0 10px 10px 0;
+    text-align: center;   
+}
+
+#logo
+{
+    display: flex;
+    justify-content: left;
+}
+
+#logo button
+{
+    border: none;
+    border-radius: 20px;
+    font-size: 1em ;
+    color: #33985d;  
+    background: transparent;
+    margin-top: 10px;
+    margin-left: 10px;
+    width: 50px;
+    height: 25px;
+}
+
+#logo button:hover
+{
+    background-color: greenyellow;
+}
+
+#logo button a 
+{
+    text-decoration: none;
+    color: white;
+}
+
+#logo h1
+{
+    color: aqua;
+    font-size: 3.2em;
+    margin: auto;
+    margin-top: 40px;
+    margin-bottom: 10px;
+}
+
+
+/*conteudo*/
+
+#login
+
+{
+    color: aqua;
+    text-align: center;
+    font-size: 2.2em;
+    margin-top: 40px;
+}
+
+form
+{
+    background-color: aquamarine;
+    text-align: center;
+    margin: auto;
+    max-width: 50%;
+    height: auto;
+    margin-bottom: 10px;
+    border-radius: 20px;
+    display: grid;
+    align-items: center;
+    box-shadow: #153f32c5 0 10px 10px 0;
+}
+
+#dados
+{
+    background-color: aquamarine;
+    width: 80%;
+    border-radius: 30px;
+    margin: auto;
+    margin-top: 30px;
+    margin-bottom: 10px; 
+    box-shadow: #153f32c5 1px 8px  4px 4px;
+}
+
+.dados
+{
+    background-color: rgba(3, 218, 128, 0.425);
+    border-radius: 30px;
+    margin: 10px;
+    display: flex;
+}
+
+.dados label
+{
+    font-size: 1.2em;
+    color: rgb(2, 93, 121);
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    background-color: #339878;
+    border: 1px solid;
+    border-radius: 10px;
+    width: 15%;
+    height: 40px;
+    text-align: left;
+    margin: 50px 0 50px 30px;
+    padding-top: 7px;
+    text-align: center;
+}
+
+.dados input
+{
+    margin: 50px 0 50px 30px;
+    width: 55%;
+    height: 60px;
+    border: none;
+    border-radius: 30px;
+    text-align: center;
+    font-size: 1.2em;
+}
+
+form button
+{
+    background: transparent;
+    border: none;
+    width: 30%;
+    height: auto;
+    margin: auto;
+    font-size: 1.5em;
+    border-radius: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+form button:hover
+{
+    background-color: #339878;
+    color: white;
+    border: 1px solid black;
+}
