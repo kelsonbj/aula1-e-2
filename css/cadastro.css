@@ -1,0 +1,55 @@
+@charset "UTF-8";
+
+/* Esta página usa o login.css como base (cabeçalho, painel verde, campos, botões, rodapé).
+   Aqui ficam só as diferenças do cadastro. Os dois ficheiros têm de estar ligados no HTML,
+   o login.css primeiro. */
+
+/* o painel do cadastro é um pouco mais largo e fica sozinho, centrado */
+#form-cadastro
+{
+   flex: 1 1 320px;
+   max-width: 560px;
+   margin: 30px 0;
+}
+
+/* texto pequeno por baixo dos campos de senha */
+.dica
+{
+   width: min(100%, 400px);
+   margin: 0 auto;
+   font-size: 0.95em;
+   text-align: left;
+}
+
+/* mensagem de erro (ex.: senhas diferentes) */
+#mensagem
+{
+   width: min(100%, 400px);
+   min-height: 1.4em; /* reserva o espaço para a página não "saltar" quando o erro aparece */
+   margin: 6px auto 0;
+   font-weight: bold;
+   color: #5a0000;
+   text-align: left;
+}
+
+/* caixa dos termos de uso */
+.termos
+{
+   width: min(100%, 400px);
+   margin: 10px auto;
+   text-align: left;
+}
+
+.termos label
+{
+   display: flex;
+   align-items: center;
+   gap: 8px;
+   cursor: pointer;
+}
+
+/* campo preenchido de forma inválida ganha um contorno vermelho */
+.campo input:invalid:not(:placeholder-shown)
+{
+   box-shadow: 0 0 0 3px #c0392b;
+}

@@ -1,27 +1,30 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Projecto Conforto</title>
+        <meta name="description" content="Conforto: móveis modernos e elegantes para transformar a sua casa e outros espaços.">
+        <title>Conforto | Móveis modernos</title>
         <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/animacoes.css">
+        <script src="js/script.js"></script>
     </head>
     <body>
 
         <!--cabeçalho-->
         <header>
             <div id="menu">
-                    <h1>Conforto</h1>
-                    <nav>
+                <h1>Conforto</h1>
+                <nav aria-label="Menu principal">
                     <ul>
-                        <li><a href="#inicio">Home</a></li>
-                        <li><a href="#sobre">About us</a></li>
-                        <li><a href="shop.html">Shop</a></li>
-                        <li><a href="#contacto">Contact</a></li>
-                        <li><button><a href="login.html">Login</a></button></li> 
-                        <li><button><a href="cadastro.html">Cadastro</a></button></li>
+                        <li><a href="index.html">Início</a></li>
+                        <li><a href="#inicio">Sobre nós</a></li>
+                        <li><a href="shop.html">Loja</a></li>
+                        <li><a href="#contacto">Contacto</a></li>
+                        <li><a href="login.html">Login</a></li>
+                        <li><a href="cadastro.html">Cadastro</a></li>
                     </ul>
-                    </nav>
+                </nav>
             </div>
         </header>
 
@@ -29,62 +32,61 @@
         <!--conteudo-->
         <div id="hero">
             <section id="inicio">
-                <h2>Quem no Somos</h2>
-                <p>A <strong>Conforto</strong> é uma empresa dedicada à comercialização de móveis, com o objetivo de transformar casas e outros espaços em ambientes mais confortáveis, modernos e elegantes.Acreditamos que cada espaço merece personalidade, qualidade e conforto. Por isso, procuramos oferecer produtos que combinam design, funcionalidade e beleza, ajudando os nossos clientes a encontrar as melhores soluções para os seus ambientes.<strong>O nosso compromisso é simples:</strong>levar mais conforto, estilo e qualidade à sua vida.</p>
+                <h2>Quem Somos</h2>
+                <p>A <strong>Conforto</strong> é uma empresa dedicada à comercialização de móveis, com o objetivo de transformar casas e outros espaços em ambientes mais confortáveis, modernos e elegantes. Acreditamos que cada espaço merece personalidade, qualidade e conforto. Por isso, procuramos oferecer produtos que combinam design, funcionalidade e beleza, ajudando os nossos clientes a encontrar as melhores soluções para os seus ambientes. <strong>O nosso compromisso é simples:</strong> levar mais conforto, estilo e qualidade à sua vida.</p>
             </section>
             <article id="conteudo">
                 <section>
-                    <h2>Modern Interior Design Studio</h2>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio hic incidunt laborum labore</p>
-                        <button id="bnt1">Shop Now</button>
-                        <button id="bnt2">Explore</button>
+                    <h2>Estúdio de Design de Interiores Moderno</h2>
+                    <p>Descubra móveis pensados para o seu dia a dia, com design atual, materiais de qualidade e o conforto que a sua casa merece.</p>
+                    <button type="button" id="bnt1" onclick="location.href='shop.html'">Comprar</button>
+                    <button type="button" id="bnt2" onclick="location.href='#produto'">Explorar</button>
                 </section>
-                <img src="img/couch.png" alt="cadeirao">
+                <img src="img/couch.png" alt="Sofá moderno de cor clara">
             </article>
         </div>
-        
+
         <div id="produto">
             <section id="conteudo2">
-                <h2>algum texto</h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat eum rem quae ratione voluptatibus, fugiat iste corporis molestias quis architecto. Accusantium fugit adipisci eligendi. Ullam molestiae ratione quas consectetur minus?</p>
-                <button>Explore</button>
+                <h2>Os nossos destaques</h2>
+                <p>Uma seleção de cadeiras e peças que unem estilo e conforto. Veja alguns dos nossos produtos mais procurados e descubra o resto na loja.</p>
+                <button type="button" onclick="location.href='shop.html'">Explorar</button>
             </section>
             <section id="anuncio">
                 <div class="produto">
-                    <img src="img/product-1.png" alt="produto1">
+                    <img src="img/product-1.png" alt="Cadeira Kruzo Aero">
                     <h2>Kruzo Aero Chair</h2>
                     <span>$40.00</span>
                 </div>
-                    <div class="produto">
-                    <img src="img/product-2.png" alt="produto2">
+                <div class="produto">
+                    <img src="img/product-2.png" alt="Cadeira Kruzo De Varanda">
                     <h2>Kruzo De Varanda</h2>
                     <span>$60.00</span>
                 </div>
-                    <div class="produto">
-                    <img src="img/product-3.png" alt="produto3">
-                    <h2> Chair Aero Meire</h2>
+                <div class="produto">
+                    <img src="img/product-3.png" alt="Cadeira Aero Meire">
+                    <h2>Chair Aero Meire</h2>
                     <span>$68.99</span>
                 </div>
             </section>
         </div>
+
         <section id="visual">
-        
             <div>
-                <img src="img/why-choose-us-img.jpg" alt="teste">
+                <img src="img/why-choose-us-img.jpg" alt="Sala de estar decorada com móveis da Conforto">
             </div>
             <div id="texto">
-                <h2>algum texto</h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat eum rem quae ratione voluptatibus, fugiat iste corporis molestias quis architecto. Accusantium fugit adipisci eligendi. Ullam molestiae ratione quas consectetur minus?</p>
-                <button>Cadastrar/Login</button>
+                <h2>Porquê escolher a Conforto?</h2>
+                <p>Trabalhamos para que cada cliente encontre móveis com qualidade, bom design e preços justos. Crie a sua conta e acompanhe as novidades e os produtos disponíveis.</p>
+                <button type="button" onclick="location.href='login.html'">Cadastrar / Login</button>
             </div>
         </section>
     </main>
 
-    <footer>
+    <footer id="contacto">
         <div>
-            <p>&copy; 2026 Projecto Conforto. Todos os direitos reservados.</p>
-            <p>Desenvolvido Por Kelson Bajé</p>
-            <p>Desenvolvedor KelsonBj</p>
+            <p>&copy; 2026 Projeto Conforto. Todos os direitos reservados.</p>
+            <p>Desenvolvido por Kelson Bajé (KelsonBj)</p>
         </div>
     </footer>
     </body>

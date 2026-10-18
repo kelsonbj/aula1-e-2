@@ -1,277 +1,187 @@
 @charset "UTF-8";
 
-/* Tamanho dos títulos (h2): acompanha a largura da tela,
-   mas nunca fica menor que 1.8rem nem maior que 2.6rem */
-:root
+/* Esta página usa o style.css como base (cabeçalho, menu, hero, botões, rodapé).
+   Aqui ficam só as partes que existem apenas na loja. Os dois ficheiros têm de estar
+   ligados no HTML, o style.css primeiro. */
+
+/* texto só para leitores de ecrã (etiqueta do campo de pesquisa) */
+.so-leitor
 {
-    --titulo: clamp(1.8rem, 1rem + 2.2vw, 2.6rem);
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
 }
 
-*
+/* página atual no menu */
+#menu a[aria-current="page"]
 {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box; /* padding e borda passam a contar dentro da largura/altura */
-    font-family: 'Times New Roman', Times, serif;
+    color: var(--texto);
+    background-size: 100% 2px;
 }
 
-/* nenhuma imagem passa da largura do espaço onde está */
-img
+/* No hero da loja não há o bloco "Quem somos": no ecrã largo o texto sobe
+   para a primeira linha da grade, ao lado da imagem.
+   (Só acima de 1100px; abaixo disso o style.css já empilha tudo.) */
+@media (min-width: 1101px)
 {
-    max-width: 100%;
-}
+    #conteudo section
+    {
+        grid-row: 1;
+    }
 
-/*corpo*/
-body
-{
-    background-color: #339878;
+    #conteudo img
+    {
+        grid-row: 1;
+    }
 }
-
-/*cabeçalho*/
-header
-{
-    background-color: rgba(1, 70, 1, 0.699);
-    min-height: 100px; /* era height: 100px, que não deixava o cabeçalho crescer */
-    width: 100%;
-    border-radius: 0 0 10px 10px;
-    box-shadow: #153f32c5 0 10px 10px 0;
-}
-
-header h1
-{
-    font-size: clamp(2.2rem, 4vw, 2.8rem);
-    color: aqua;
-    text-align: justify;
-    margin: 5px 2px 5px 15px;
-}
-
-/*menu*/
-#menu
-{
-    display: flex;
-    justify-content: space-between;
-    padding-top: 20px;
-}
-#menu ul
-{
-    list-style: none;
-    display: flex;
-    flex-wrap: wrap; /* se os links não couberem, quebram de linha */
-    text-align: center;
-    margin: 20px;
-}
-#menu a
-{
-    font-size: 1.2em;
-    margin-left: 10px;
-    color: aquamarine;
-    text-decoration: none;
-    padding-right: 10px;
-}
-
-#menu a:hover
-{
-    color: white;
-    text-align: center;
-}
-
-#menu button 
-{
-    background: transparent;
-    border: none;
-}
-/*conteudo*/
-/* O #hero é uma grade de 2 colunas:
-   coluna 1 = "Quem somos" + texto do hero | coluna 2 = imagem.
-   Sem altura fixa e sem margens negativas: o que cresce empurra o resto, nada se sobrepõe. */
-#hero
-{
-    display: grid;
-    grid-template-columns: minmax(0, 4fr) minmax(0, 5fr);
-    column-gap: 20px;
-    align-items: center;
-    padding: 0 20px;
-    background-color: rgba(1, 70, 1, 0.699);
-    margin: 20px;
-    border-radius: 20px;
-    box-shadow: #153f32c5 0 10px 10px 0;
-}
-
-#inicio
-{
-    grid-column: 1;
-    grid-row: 1;
-    width: 100%;
-    max-width: 650px;
-    justify-self: center;
-}
-
-#inicio h2
-{
-    color: aqua;
-    font-size: var(--titulo);
-    text-align: center;
-    padding-top: 30px;
-}
-
-#inicio p
-{
-    margin-top: 20px;
-    margin-bottom: 50px;
-    text-align: justify;
-    font-size: 1.2em;
-}
-
-/* #conteudo "desaparece" da estrutura: o texto e a imagem dentro dele
-   passam a ser itens da grade do #hero */
-#conteudo
-{
-    display: contents;
-}
-
-#conteudo section
-{
-    grid-column: 1;
-    grid-row: 2;
-    width: 100%;
-    max-width: 700px;
-    justify-self: center;
-    margin-bottom: 40px;
-    text-align: center;
-}
-
-#conteudo h2
-{
-    color: aqua;
-    font-size: var(--titulo);
-    text-align: center;
-}
-
-#conteudo p
-{
-    margin-top: 20px;
-    margin-bottom: 50px;
-    text-align: justify;
-    font-size: 1.2em;
-}
-
-#conteudo img
-{
-    grid-column: 2;
-    grid-row: 1 / span 2;
-    align-self: end;
-    justify-self: center;
-    width: 100%;
-    max-width: 800px;
-    aspect-ratio: 4 / 3; /* mantém a proporção 800x600 em qualquer largura */
-    height: auto;
-    object-fit: contain;
-    border-radius: 10px;
-    transition: transform 0.3s ease;
-}
-
-#conteudo img:hover
-{
-    transform: scale(1.05);
-}
-
-#bnt1
-{
-    background: transparent;
-    width: 100px;
-    height: 60px;
-    border: 1px solid;
-    border-radius: 10px;
-    font-size: 1.2em;
-}
-
-#bnt1:hover
-{
-    background-color: rgb(0, 51, 51);
-    color: white;
-}
-
-#bnt2
-{
-    margin-left: 35px;
-    background-color: black;
-    width: 80px;
-    height: 60px;
-    border: 1px solid;
-    border-radius: 10px;
-    color: white;
-    font-size: 1.2em;
-}
-
-#bnt2:hover
-{
-    background-color: white;
-    color: black;
-}
-
 
 /*stock*/
 #stock
 {
-    margin: 7% 0%;
+    margin: 40px 0;
+    padding: 30px 10px;
     text-align: center;
     background-color: aquamarine;
-    
+}
+
+#stock h2
+{
+    font-size: var(--titulo);
+    margin-bottom: 20px;
+}
+
+/* campo de pesquisa + botão: ficam lado a lado e quebram de linha se não couberem */
+#busca
+{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
 }
 
 #stock input
 {
-    width: 400px;
+    width: min(400px, 90%); /* era width: 400px fixa, que estourava em telemóvel */
     height: 40px;
     font-size: 1.2em;
-    margin-top: 10px;
+    padding: 0 10px;
 }
 
 #pes
 {
     background-color: black;
     color: aqua;
-    width: 100px;
+    min-width: 100px;
     height: 40px;
     border: none;
-    padding: 10px;
+    padding: 0 16px;
+    font-size: 1.1em;
 }
 
-#produto
+#pes:hover
+{
+    background-color: rgb(0, 51, 51);
+    color: white;
+}
+
+/* grade que se ajusta sozinha: 3 colunas no ecrã largo, 1 no telemóvel (era 3 fixas) */
+#lista-produtos
 {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 10px;
-    margin: 10px;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 16px;
+    max-width: 1000px;
+    margin: 30px auto 10px;
+    padding: 0 10px;
 }
-.produto
+
+.card
 {
     background-color: aliceblue;
     border-radius: 10px;
     text-align: center;
-    padding-bottom: 10px;
+    padding: 10px 10px 16px;
+    box-shadow: var(--sombra) 0 6px 8px 0;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.produto img
+.card:hover
 {
-    width: 100%;
-    height: auto;
+    transform: translateY(-4px);
+    box-shadow: var(--sombra) 0 12px 14px 0;
 }
 
-.produto h2
+.card img
+{
+    display: block;
+    width: 100%;
+    aspect-ratio: 10 / 9;
+    height: auto;
+    object-fit: contain;
+}
+
+.card h3
 {
     font-size: 1.2em;
+    margin-top: 8px;
 }
 
-.produto span
+.preco
 {
+    display: block;
+    margin-top: 4px;
     font-size: 20px;
     font-style: oblique;
 }
 
-.produto button
+/* o botão "buy" era transparente e sem borda, por isso não parecia um botão */
+.comprar
 {
+    margin-top: 10px;
+    padding: 6px 20px;
+    border: 1px solid #000;
     border-radius: 25px;
-    border: none;
     background: transparent;
+    font-size: 1.1em;
+}
+
+.comprar:hover
+{
+    background-color: rgb(0, 51, 51);
+    color: white;
+}
+
+#sem-resultados
+{
+    margin-top: 20px;
+    font-size: 1.2em;
+}
+
+/* aviso que aparece em baixo ao clicar em "Comprar" */
+#aviso
+{
+    position: fixed;
+    left: 50%;
+    bottom: 20px;
+    translate: -50% 20px;
+    max-width: 90%;
+    padding: 12px 22px;
+    border-radius: 25px;
+    background: black;
+    color: aqua;
+    text-align: center;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease, translate 0.3s ease;
+}
+
+#aviso.mostrar
+{
+    opacity: 1;
+    visibility: visible;
+    translate: -50% 0;
 }

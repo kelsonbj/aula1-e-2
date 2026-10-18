@@ -3,83 +3,107 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Loja</title>
+    <meta name="description" content="Loja Conforto: cadeiras, poltronas e móveis modernos para a sua casa.">
+    <title>Loja | Conforto</title>
+    <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/shop.css">
+    <link rel="stylesheet" href="css/animacoes.css">
+    <script src="js/script.js"></script>
 </head>
 <body>
     <!--cabeçalho-->
-        <header>
-            <div id="menu">
-                    <h1>Conforto</h1>
-                    <nav>
-                    <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="#sobre">About us</a></li>
-                        <li><a href="#loja">Shop</a></li>
-                        <li><a href="#contacto">Contact</a></li>
-                        <li><button><a href="cadastro.html">Cadastrar Produto</a></button></li> 
-                    </ul>
-                    </nav>
-            </div>
-        </header>
+    <header>
+        <div id="menu">
+            <h1>Conforto</h1>
+            <nav aria-label="Menu principal">
+                <ul>
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="index.html#inicio">Sobre nós</a></li>
+                    <li><a href="shop.html" aria-current="page">Loja</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                    <li><a href="login.html">Login</a></li>
+                    <li><a href="cadastro.html">Cadastro</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
 
+    <main>
         <!--conteudo-->
-            <div id="hero">
-                <section id="inicio">
-                    <h2>Quem no Somos</h2>
-                    <p>A <strong>Conforto</strong> é uma empresa dedicada à comercialização de móveis, com o objetivo de transformar casas e outros espaços em ambientes mais confortáveis, modernos e elegantes.Acreditamos que cada espaço merece personalidade, qualidade e conforto. Por isso, procuramos oferecer produtos que combinam design, funcionalidade e beleza, ajudando os nossos clientes a encontrar as melhores soluções para os seus ambientes.<strong>O nosso compromisso é simples:</strong>levar mais conforto, estilo e qualidade à sua vida.</p>
+        <div id="hero">
+            <article id="conteudo">
+                <section>
+                    <h2>Encontre o móvel ideal</h2>
+                    <p>Cadeiras, poltronas e peças com design moderno e muito conforto. Pesquise pelo nome e escolha o que combina com o seu espaço.</p>
+                    <button type="button" id="bnt1" onclick="location.href='#stock'">Ver produtos</button>
+                    <button type="button" id="bnt2" onclick="location.href='index.html'">Início</button>
                 </section>
-                <article id="conteudo">
-                    <section>
-                        <h2>Modern Interior Design Studio</h2>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio hic incidunt laborum labore</p>
-                            <button id="bnt1">Shop Now</button>
-                            <button id="bnt2">Explore</button>
-                    </section>
-                    <img src="img/couch.png" alt="cadeirao">
+                <img src="img/couch.png" alt="Sofá moderno de cor clara">
+            </article>
+        </div>
+
+        <section id="stock" aria-labelledby="titulo-produtos">
+            <h2 id="titulo-produtos">Os nossos produtos</h2>
+
+            <form id="busca" role="search">
+                <label for="pesquisa" class="so-leitor">Pesquisar produto</label>
+                <input type="search" name="pesquisar" id="pesquisa" placeholder="Pesquisar produto" autocomplete="off">
+                <button type="submit" id="pes">Pesquisar</button>
+            </form>
+
+            <div id="lista-produtos">
+                <article class="card">
+                    <img src="img/product-1.png" alt="Cadeira Kruzo Aero">
+                    <h3>Kruzo Aero Chair</h3>
+                    <span class="preco">$40.00</span>
+                    <button type="button" class="comprar">Comprar</button>
+                </article>
+                <article class="card">
+                    <img src="img/product-2.png" alt="Cadeira Kruzo De Varanda">
+                    <h3>Kruzo De Varanda</h3>
+                    <span class="preco">$60.00</span>
+                    <button type="button" class="comprar">Comprar</button>
+                </article>
+                <article class="card">
+                    <img src="img/product-3.png" alt="Cadeira Aero Meire">
+                    <h3>Chair Aero Meire</h3>
+                    <span class="preco">$68.99</span>
+                    <button type="button" class="comprar">Comprar</button>
+                </article>
+                <article class="card">
+                    <img src="img/product-1.png" alt="Produto de exemplo 4">
+                    <h3>Produto de exemplo 4</h3>
+                    <span class="preco">$50.00</span>
+                    <button type="button" class="comprar">Comprar</button>
+                </article>
+                <article class="card">
+                    <img src="img/product-2.png" alt="Produto de exemplo 5">
+                    <h3>Produto de exemplo 5</h3>
+                    <span class="preco">$55.00</span>
+                    <button type="button" class="comprar">Comprar</button>
+                </article>
+                <article class="card">
+                    <img src="img/product-3.png" alt="Produto de exemplo 6">
+                    <h3>Produto de exemplo 6</h3>
+                    <span class="preco">$75.00</span>
+                    <button type="button" class="comprar">Comprar</button>
                 </article>
             </div>
-        <section id="stock">
-            <input type="text" name="pesquisar" id="pesquisa" placeholder="Pesquisar Produto">
-            <button id="pes">pesquisar</button>
-            <div id="produto">
-                <article class="produto">
-                    <img src="img/product-3.png" alt="produto1">
-                    <h2>NBA outra</h2>
-                    <span>10$</span>
-                    <button>buy</button>
-                </article>
-                <article class="produto">
-                    <img src="img/product-1.png" alt="produto1">
-                    <h2>NBA outra</h2>
-                    <span>10$</span>
-                    <button>buy</button>
-                </article>
-                <article class="produto">
-                    <img src="img/product-2.png" alt="produto1">
-                    <h2>NBA outra</h2>
-                    <span>10$</span>
-                    <button>buy</button>
-                </article>
-                <article class="produto">
-                    <img src="img/product-3.png" alt="produto1">
-                    <h2>NBA outra</h2>
-                    <span>10$</span>
-                    <button>buy</button>
-                </article>
-                <article class="produto">
-                    <img src="img/product-1.png" alt="produto1">
-                    <h2>NBA outra</h2>
-                    <span>10$</span>
-                    <button>buy</button>
-                </article>
-                <article class="produto">
-                    <img src="img/product-2.png" alt="produto1">
-                    <h2>NBA outra</h2>
-                    <span>10$</span>
-                    <button>buy</button>
-                </article>
-            </div>
+
+            <p id="sem-resultados" hidden>Nenhum produto encontrado. Tente outro nome.</p>
         </section>
+    </main>
+
+    <!--aviso que aparece ao clicar em "Comprar"-->
+    <div id="aviso" role="status" aria-live="polite"></div>
+
+    <footer id="contacto">
+        <div>
+            <p>&copy; 2026 Projeto Conforto. Todos os direitos reservados.</p>
+            <p>Desenvolvido por Kelson Bajé (KelsonBj)</p>
+        </div>
+    </footer>
+
+    <script src="js/shop.js"></script>
 </body>
 </html>

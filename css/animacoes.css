@@ -1,0 +1,239 @@
+@charset "UTF-8";
+
+/* =====================================================
+   ANIMAÇÕES DO PROJECTO CONFORTO
+   Este ficheiro só cuida de movimento. O visual (cores,
+   tamanhos, layout) continua no style.css.
+   Para mudar a velocidade de uma animação, troque o
+   tempo (ex.: .8s) por outro valor.
+   ===================================================== */
+
+/* rolagem suave ao clicar nos links do menu (#inicio, #contacto...) */
+html
+{
+    scroll-behavior: smooth;
+}
+
+/* evita barra de rolagem horizontal enquanto os elementos entram de lado */
+body
+{
+    overflow-x: clip;
+}
+
+/* ---------- 1. Os "filmes" (keyframes) ---------- */
+/* cada um diz de onde o elemento sai e onde chega */
+
+@keyframes surgir        /* sobe e aparece */
+{
+    from { opacity: 0; translate: 0 40px; }
+    to   { opacity: 1; translate: 0 0; }
+}
+
+@keyframes descer        /* desce e aparece */
+{
+    from { opacity: 0; translate: 0 -30px; }
+    to   { opacity: 1; translate: 0 0; }
+}
+
+@keyframes da-esquerda   /* entra pela esquerda */
+{
+    from { opacity: 0; translate: -60px 0; }
+    to   { opacity: 1; translate: 0 0; }
+}
+
+@keyframes da-direita    /* entra pela direita */
+{
+    from { opacity: 0; translate: 60px 0; }
+    to   { opacity: 1; translate: 0 0; }
+}
+
+@keyframes flutuar       /* sobe e desce devagar, sem parar */
+{
+    0%, 100% { translate: 0 0; }
+    50%      { translate: 0 -12px; }
+}
+
+@keyframes ondinha       /* círculo que cresce e some ao clicar num botão */
+{
+    to { transform: scale(5); opacity: 0; }
+}
+
+/* ---------- 2. Animações ao abrir a página ---------- */
+
+header h1
+{
+    animation: descer 0.8s ease both;
+}
+
+/* cada item do menu entra um pouco depois do anterior */
+#menu li
+{
+    animation: descer 0.6s ease both;
+}
+#menu li:nth-child(1) { animation-delay: 0.1s; }
+#menu li:nth-child(2) { animation-delay: 0.2s; }
+#menu li:nth-child(3) { animation-delay: 0.3s; }
+#menu li:nth-child(4) { animation-delay: 0.4s; }
+#menu li:nth-child(5) { animation-delay: 0.5s; }
+#menu li:nth-child(6) { animation-delay: 0.6s; }
+
+#hero
+{
+    animation: surgir 1s ease both;
+}
+
+#inicio
+{
+    animation: da-esquerda 1s ease 0.2s both;
+}
+
+#conteudo section
+{
+    animation: da-esquerda 1s ease 0.4s both;
+}
+
+/* a imagem do sofá entra pela direita e depois fica a flutuar */
+#conteudo img
+{
+    animation: da-direita 1s ease 0.4s both,
+               flutuar 5s ease-in-out 1.4s infinite;
+}
+
+/* ---------- 3. Animações ao rolar a página ---------- */
+/* O script.js põe a classe "reveal" nos elementos e a classe "visivel"
+   quando eles aparecem no ecrã. Só esconde se o JavaScript estiver ativo. */
+
+.js .reveal
+{
+    opacity: 0;
+}
+
+.js .reveal.visivel
+{
+    animation: surgir 0.8s ease both;
+    animation-delay: var(--atraso, 0s); /* o script usa isto para escalonar os cartões */
+}
+
+.js .reveal.da-esquerda.visivel
+{
+    animation-name: da-esquerda;
+}
+
+.js .reveal.da-direita.visivel
+{
+    animation-name: da-direita;
+}
+
+/* ---------- 4. Menu: linha que cresce ao passar o rato ---------- */
+
+#menu a
+{
+    background: linear-gradient(currentColor, currentColor) no-repeat 0 100% / 0 2px;
+    padding-bottom: 2px;
+    transition: background-size 0.3s ease, color 0.3s ease;
+}
+
+#menu a:hover
+{
+    background-size: 100% 2px;
+}
+
+/* ---------- 5. Botões ---------- */
+
+button
+{
+    position: relative;
+    overflow: hidden; /* a ondinha não sai do botão */
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.15s ease;
+}
+
+button:active
+{
+    transform: scale(0.95); /* "afunda" ao clicar */
+}
+
+/* círculo criado pelo script.js no ponto do clique */
+.ondinha
+{
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    pointer-events: none;
+    transform: scale(0);
+    animation: ondinha 0.6s ease-out forwards;
+}
+
+/* ---------- 6. Barra de progresso da rolagem (criada pelo script.js) ---------- */
+
+#barra-progresso
+{
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 4px;
+    width: 0;
+    background: aqua;
+    z-index: 1000;
+    transition: width 0.1s linear;
+}
+
+/* ---------- 7. Botão "voltar ao topo" (criado pelo script.js) ---------- */
+
+#voltar-topo
+{
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    width: 48px;
+    height: 48px;
+    border: none;
+    border-radius: 50%;
+    background: black;
+    color: aqua;
+    font-size: 1.5em;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    translate: 0 20px;
+    transition: opacity 0.3s ease, visibility 0.3s ease, translate 0.3s ease,
+                background-color 0.3s ease, color 0.3s ease, transform 0.15s ease;
+}
+
+#voltar-topo.mostrar
+{
+    opacity: 1;
+    visibility: visible;
+    translate: 0 0;
+}
+
+#voltar-topo:hover
+{
+    background: aqua;
+    color: black;
+}
+
+/* ---------- 8. Respeitar quem desativou animações no sistema ---------- */
+/* (pessoas com enjoo de movimento, por exemplo) */
+
+@media (prefers-reduced-motion: reduce)
+{
+    *,
+    *::before,
+    *::after
+    {
+        animation: none !important;
+        transition: none !important;
+    }
+
+    html
+    {
+        scroll-behavior: auto;
+    }
+
+    .js .reveal
+    {
+        opacity: 1;
+    }
+}

@@ -11,6 +11,7 @@
     --subtitulo: aqua;
     --color_titulo: aquamarine;
     --menu: aquamarine;
+    --sombra: #153f32c5;
 }
 
 *
@@ -27,6 +28,20 @@ img
     max-width: 100%;
 }
 
+/* botões mostram a mãozinha ao passar o rato */
+button
+{
+    cursor: pointer;
+}
+
+/* contorno visível para quem navega com o teclado */
+a:focus-visible,
+button:focus-visible
+{
+    outline: 3px solid white;
+    outline-offset: 3px;
+}
+
 /*corpo*/
 body
 {
@@ -39,7 +54,6 @@ header
     background-color: var(--fundo);
     min-height: 100px; /* era height: 100px, que não deixava o cabeçalho crescer */
     width: 100%;
-    height: auto;
     border-radius: 0 0 10px 10px;
     box-shadow: #0d271f 0 10px 10px 0;
 }
@@ -71,21 +85,16 @@ header h1
 {
     font-size: 1.2em;
     margin-left: 10px;
-    color: aquamarine;
+    color: var(--menu);
     text-decoration: none;
     padding-right: 10px;
 }
 
 #menu a:hover
 {
-    color: white;
+    color: var(--texto);
 }
 
-#menu button 
-{
-    background: transparent;
-    border: none;
-}
 /*conteudo*/
 /* O #hero é uma grade de 2 colunas:
    coluna 1 = "Quem somos" + texto do hero | coluna 2 = imagem.
@@ -106,7 +115,7 @@ main
     background-color: var(--fundo);
     margin: 20px;
     border-radius: 20px;
-    box-shadow: #153f32c5 0 10px 10px 0;
+    box-shadow: var(--sombra) 0 10px 10px 0;
 }
 
 #inicio
@@ -120,7 +129,7 @@ main
 
 #inicio h2
 {
-    color: aqua;
+    color: var(--subtitulo);
     font-size: var(--titulo);
     text-align: center;
     padding-top: 30px;
@@ -154,7 +163,7 @@ main
 
 #conteudo h2
 {
-    color: aqua;
+    color: var(--subtitulo);
     font-size: var(--titulo);
     text-align: center;
 }
@@ -187,11 +196,13 @@ main
     transform: scale(1.05);
 }
 
+/* min-width em vez de width fixa: textos maiores ("Comprar", "Explorar") cabem no botão */
 #bnt1
 {
     background: transparent;
-    width: 100px;
+    min-width: 100px;
     height: 60px;
+    padding: 0 16px;
     border: 1px solid;
     border-radius: 10px;
     font-size: 1.2em;
@@ -207,8 +218,9 @@ main
 {
     margin-left: 35px;
     background-color: black;
-    width: 80px;
+    min-width: 80px;
     height: 60px;
+    padding: 0 16px;
     border: 1px solid;
     border-radius: 10px;
     color: white;
@@ -228,11 +240,11 @@ main
     align-items: center;
     justify-content: center;
     gap: 20px;
-    background-color: rgb(1, 70, 1);
+    background-color: var(--fundo);
     margin: 20px;
     border-radius: 20px;
     text-align: center;
-    box-shadow: #153f32c5 0 10px 10px 0;
+    box-shadow: var(--sombra) 0 10px 10px 0;
 }
 
 #conteudo2
@@ -242,7 +254,7 @@ main
     margin: 40px 30px 40px 50px;
     background-color: cyan;
     border-radius: 25px;
-    box-shadow: #153f32c5 10px 10px 10px 5px;
+    box-shadow: var(--sombra) 10px 10px 10px 5px;
 }
 
 #conteudo2 h2
@@ -263,9 +275,9 @@ main
 #conteudo2 button
 {
     background: transparent;
-    width: 70px;
+    min-width: 70px;
     height: 50px;
-    padding: 2px;
+    padding: 2px 12px;
     border: none;
     border-radius: 25px;
     font-size: 1.2em;
@@ -298,7 +310,7 @@ main
     border-radius: 20px;
     padding: 0 0 12px;
     text-align: center;
-    box-shadow: #153f32c5 10px 10px 10px 5px;
+    box-shadow: var(--sombra) 10px 10px 10px 5px;
     transition: transform 0.3s ease;
 }
 
@@ -365,7 +377,7 @@ main
 
 #texto h2
 {
-    color: aqua;
+    color: var(--subtitulo);
     font-size: var(--titulo);
     text-align: center;
 }
@@ -393,6 +405,15 @@ main
     border: 1px solid;
     background-color: rgb(0, 51, 51);
     color: white;
+}
+
+/*rodape*/
+footer
+{
+    background-color: rgba(1, 70, 1, 0.699);
+    text-align: center;
+    color: var(--menu);
+    padding: 10px;
 }
 
 /* --- RESPONSIVIDADE (MEDIA QUERIES) --- */
@@ -551,6 +572,13 @@ main
         padding: 8px;
     }
 
+    /* os dois botões do hero quebram de linha sem estourar a largura */
+    #bnt2
+    {
+        margin-left: 0;
+        margin-top: 10px;
+    }
+
     /* um produto por linha */
     .produto
     {
@@ -562,11 +590,4 @@ main
     {
         padding: 15px 15px 25px;
     }
-}
-
-footer
-{
-    background-color: rgba(1, 70, 1, 0.699);
-    text-align: center;
-    color: aquamarine;
 }

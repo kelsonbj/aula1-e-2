@@ -1,71 +1,85 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Login | Conforto</title>
     <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="css/animacoes.css">
+    <script src="js/script.js"></script>
 </head>
 <body>
     <header>
-        <button><a href="index.html">voltar</a></button>
+        <a class="voltar" href="index.html">&larr; Voltar</a>
         <h1>Conforto</h1>
     </header>
     <main>
-        <form action="">
-            <section id="carrossel">
-                <!--carrosel-->
-                <div class="carrossel">
-                    <article class="carrossel-img">
-                        <img src="img/carrossel.png" alt="">
-                    </article>
-                    <article class="carrossel-info">
-                        <p>conteudo</p>
-                        <p>$30</p>
-                    </article>
-                </div>
-                <div class="carrossel">
-                    <article class="carrossel-img">
-                        <img src="img/carrossel2.png" alt="">
-                    </article>
-                    <article class="carrossel-info">
-                        <p>conteudo</p>
-                        <p>$30</p>
-                    </article>
-                </div>
-                <div class="carrossel">
-                    <article class="carrossel-img">
-                        <img src="img/carrossel3.png" alt="">
-                    </article>
-                    <article class="carrossel-info">
-                        <p>conteudo</p>
-                        <p>$30</p>
-                    </article>
-                </div>
-            </section>
-            <section id="dados">
-                <h1>Login</h1>
-                <div class="dados" id="texto">
-                    <input type="text" placeholder="Digite Seu E-mail" required>
-                </div>
-                <div class="dados" id="senha">
-                    <input type="password" placeholder="Digite Sua Senha" required>
-                </div>
-                <div class="dados" id="check">
-                    <input type="checkbox">
-                    <p>Esqueceu a Senha?</p>
-                </div>
-                <button>entrar</button>
+        <div id="login-layout">
 
+            <!--carrossel-->
+            <section id="carrossel" aria-label="Destaques da loja">
+                <div class="carrossel">
+                    <article class="carrossel-img">
+                        <img src="img/carrossel.png" alt="Sala de estar com móveis modernos">
+                    </article>
+                    <article class="carrossel-info">
+                        <p>Sala de estar</p>
+                    </article>
+                </div>
+                <div class="carrossel">
+                    <article class="carrossel-img">
+                        <img src="img/carrossel2.png" alt="Cadeiras e poltronas confortáveis">
+                    </article>
+                    <article class="carrossel-info">
+                        <p>Cadeiras e poltronas</p>
+                    </article>
+                </div>
+                <div class="carrossel">
+                    <article class="carrossel-img">
+                        <img src="img/carrossel3.png" alt="Ambiente decorado com design elegante">
+                    </article>
+                    <article class="carrossel-info">
+                        <p>Conforto em cada detalhe</p>
+                    </article>
+                </div>
             </section>
-        </form>
+
+            <!--formulário: só os campos de login ficam dentro do form-->
+            <form id="form-login" method="post">
+                <section id="dados">
+                    <h1>Login</h1>
+
+                    <div class="campo">
+                        <label for="email" class="so-leitor">E-mail</label>
+                        <input type="email" id="email" name="email" placeholder="Digite seu e-mail" autocomplete="email" required>
+                    </div>
+
+                    <div class="campo campo-senha">
+                        <label for="senha" class="so-leitor">Senha</label>
+                        <input type="password" id="senha" name="senha" placeholder="Digite sua senha" autocomplete="current-password" required>
+                        <button type="button" class="mostrar-senha" id="mostrar-senha" aria-pressed="false" aria-label="Mostrar senha">Mostrar</button>
+                    </div>
+
+                    <div class="opcoes">
+                        <label><input type="checkbox" name="lembrar"> Lembrar-me</label>
+                        <a href="#">Esqueceu a senha?</a>
+                    </div>
+
+                    <button type="submit" class="botao-entrar">Entrar</button>
+
+                    <p class="cadastrar">Ainda não tem conta? <a href="cadastro.html">Cadastre-se</a></p>
+                </section>
+            </form>
+
+        </div>
     </main>
     <footer>
         <div>
-            <p>&copy; 2026 Projecto Conforto. Todos os direitos reservados.</p>
-            <p>Desenvolvido Por Kelson Bajé</p>
-            <p>Desenvolvedor KelsonBj</p>
+            <p>&copy; 2026 Projeto Conforto. Todos os direitos reservados.</p>
+            <p>Desenvolvido por Kelson Bajé (KelsonBj)</p>
         </div>
     </footer>
+
+    <script src="js/login.js"></script>
 </body>
 </html>

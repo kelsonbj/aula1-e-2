@@ -1,8 +1,17 @@
 @charset "UTF-8";
+
+:root
+{
+   --sombra: rgb(19, 39, 32);
+   --verde-escuro: rgb(1, 70, 1);
+   --painel: rgba(3, 146, 99, 0.815);
+}
+
 *
 {
    margin: 0;
    padding: 0;
+   box-sizing: border-box; /* padding e borda contam dentro da largura/altura */
    font-family: 'Times New Roman', Times, serif;
 }
 
@@ -11,14 +20,36 @@ body
    background-color: aquamarine;
 }
 
+/* nenhuma imagem passa da largura do espaço onde está */
 img
 {
-   width: 100%;
+   max-width: 100%;
 }
+
+/* texto só para leitores de ecrã (etiquetas dos campos): some do visual mas continua acessível */
+.so-leitor
+{
+   position: absolute;
+   width: 1px;
+   height: 1px;
+   overflow: hidden;
+   clip: rect(0 0 0 0);
+   white-space: nowrap;
+}
+
+/* contorno visível para quem navega com o teclado */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible
+{
+   outline: 3px solid white;
+   outline-offset: 3px;
+}
+
 /*cabeça*/
 header
 {
-   background-color: rgb(1, 70, 1);
+   background-color: var(--verde-escuro);
    border-radius: 0% 0% 10px 10px;
    width: 100%;
    height: auto;
@@ -33,32 +64,51 @@ header h1
    padding: 10px;
 }
 
-header button
+/* o link "voltar" (era um <button><a>, que é HTML inválido) */
+.voltar
 {
+   display: inline-block;
    margin: 10px 30px 0 30px;
-   text-align: left;
-}  
+   padding: 6px 16px;
+   border: 1px solid #fff;
+   border-radius: 10px;
+   color: #fff;
+   text-decoration: none;
+   transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.voltar:hover
+{
+   background-color: #fff;
+   color: var(--verde-escuro);
+}
 
 /*corpo*/
 main
 {
    text-align: center;
    background: url(../img/fundo.jpg);
+   padding: 10px 0;
 }
 
-form
+/* carrossel e formulário lado a lado; quando não cabem, passam para baixo um do outro */
+#login-layout
 {
    display: flex;
-   justify-content: space-between;
+   justify-content: center;
+   align-items: flex-start;
+   flex-wrap: wrap;
+   gap: 20px;
+   padding: 0 20px;
 }
 
 #carrossel
 {
-   margin: 30px;
+   flex: 1 1 320px;
+   max-width: 600px;
+   margin: 30px 0;
    padding: 10px;
-   background-color: rgba(3, 146, 99, 0.815);
-   width: 600px;
-   height: auto;
+   background-color: var(--painel);
    display: grid;
    gap: 10px;
 }
@@ -71,91 +121,189 @@ form
 
 .carrossel-img img
 {
-   width: 500px;
-   height: 400px;
+   display: block;
+   width: 100%;
+   aspect-ratio: 5 / 4; /* mantém a proporção 500x400 em qualquer largura */
+   height: auto;
+   object-fit: cover;
 }
 
 .carrossel-info
 {
+   padding: 8px;
+}
 
+/* o form passa a ser só o painel de login */
+#form-login
+{
+   flex: 1 1 320px;
+   max-width: 500px;
+   margin: 30px 0;
 }
 
 #dados
 {
-    margin: 30px 40px;
-    padding: 20px;
-    background-color: rgba(3, 146, 99, 0.815);
-    width: 500px;
-    height: 400px;
-    border-radius: 20px;
-    box-shadow: 10px 0 10px 0 rgb(19, 39, 32);
+   padding: 20px;
+   background-color: var(--painel);
+   min-height: 400px; /* era height fixa: se o conteúdo crescer, o painel cresce junto */
+   border-radius: 20px;
+   box-shadow: 10px 0 10px 0 var(--sombra);
 }
 
 #dados h1
 {
    color: #fff;
-   margin: 0 0 10px 0;
-   font-size: 2.9em;
-   margin-top: 60px;
+   margin: 40px 0 10px 0;
+   font-size: clamp(2.2rem, 6vw, 2.9rem);
 }
 
-.dados
+.campo
 {
-    margin-top: 10px;
-    margin-bottom: 10px;
+   position: relative;
+   width: min(100%, 400px);
+   margin: 20px auto;
 }
 
-#texto input
+.campo input
 {
-   font-size: 2em;
-   width: auto;
-   height: 40px;
+   display: block;
+   width: 100%;
+   height: 44px;
+   font-size: 1.3em;
    border: none;
    border-radius: 20px;
    text-align: center;
-   margin: 20px 5px;
 }
 
-#senha input
+/* espaço nos dois lados do campo de senha para o botão "Mostrar" */
+.campo-senha input
 {
-   font-size: 2em;
-   width: auto;
-   height: 40px;
+   padding: 0 80px;
+}
+
+.mostrar-senha
+{
+   position: absolute;
+   top: 50%;
+   right: 8px;
+   translate: 0 -50%;
+   padding: 4px 10px;
    border: none;
-   border-radius: 20px;
-   text-align: center;
-   margin: 20px 5px;
+   border-radius: 15px;
+   background: black;
+   color: aqua;
+   font-size: 0.9em;
+   cursor: pointer;
 }
 
-#check
+.opcoes
 {
-    display: flex;
-    margin-left: 30px;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   gap: 10px;
+   width: min(100%, 400px);
+   margin: 10px auto;
 }
 
-#check input
+.opcoes label
 {
-   margin: 0 20px;
+   display: flex;
+   align-items: center;
+   gap: 8px;
+   cursor: pointer;
 }
 
-#dados button
+.opcoes a,
+.cadastrar a
 {
-   
+   color: #000;
+}
+
+.botao-entrar
+{
    border: 1px solid black;
    border-radius: 20px;
-   margin: 30px 0;
-   width: 100px;
-   height: auto;
+   margin: 20px 0 10px;
+   min-width: 120px; /* era width fixa de 100px */
+   padding: 8px 20px;
    font-size: 1.2em;
    background: transparent;
+   cursor: pointer;
+   transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.botao-entrar:hover
+{
+   background-color: rgb(0, 51, 51);
+   color: white;
+}
+
+.cadastrar
+{
+   margin-top: 10px;
 }
 
  /*rodape*/
 
- footer
- {
-    text-align: center;
-    background-color: rgba(1, 70, 1, 0.699);
-    width: 100%;
-    height: auto;
- }
+footer
+{
+   text-align: center;
+   background-color: rgba(1, 70, 1, 0.699);
+   width: 100%;
+   height: auto;
+   padding: 10px;
+}
+
+/* --- RESPONSIVIDADE --- */
+
+/* Tablets e celulares: o formulário vem primeiro, o carrossel embaixo */
+@media (max-width: 760px)
+{
+   #form-login
+   {
+      order: 1;
+   }
+
+   #carrossel
+   {
+      order: 2;
+   }
+}
+
+/* Celulares */
+@media (max-width: 600px)
+{
+   header h1
+   {
+      text-align: center;
+      font-size: 2.4em;
+      margin: 0;
+   }
+
+   .voltar
+   {
+      margin: 10px 15px 0;
+   }
+
+   #login-layout
+   {
+      padding: 0 12px;
+   }
+
+   #dados
+   {
+      padding: 16px;
+   }
+
+   #dados h1
+   {
+      margin-top: 20px;
+   }
+
+   .opcoes
+   {
+      flex-wrap: wrap;
+      justify-content: center;
+   }
+}
