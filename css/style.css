@@ -30,11 +30,12 @@ body
 /*cabeçalho*/
 header
 {
-    background-color: rgba(1, 70, 1, 0.699);
+    background-color: rgb(1, 70, 1);
     min-height: 100px; /* era height: 100px, que não deixava o cabeçalho crescer */
     width: 100%;
+    height: auto;
     border-radius: 0 0 10px 10px;
-    box-shadow: #153f32c5 0 10px 10px 0;
+    box-shadow: #0d271f 0 10px 10px 0;
 }
 
 header h1
@@ -42,7 +43,7 @@ header h1
     font-size: clamp(2.2rem, 4vw, 2.8rem);
     color: aqua;
     text-align: justify;
-    margin: 5px 2px 5px 15px;
+    margin: 5px 2px 10px 15px;
 }
 
 /*menu*/
@@ -83,6 +84,12 @@ header h1
 /* O #hero é uma grade de 2 colunas:
    coluna 1 = "Quem somos" + texto do hero | coluna 2 = imagem.
    Sem altura fixa e sem margens negativas: o que cresce empurra o resto, nada se sobrepõe. */
+main
+{
+    background: url(../img/fundo.jpg);
+}
+
+
 #hero
 {
     display: grid;
@@ -90,7 +97,7 @@ header h1
     column-gap: 20px;
     align-items: center;
     padding: 0 20px;
-    background-color: rgba(1, 70, 1, 0.699);
+    background-color: rgb(1, 70, 1);
     margin: 20px;
     border-radius: 20px;
     box-shadow: #153f32c5 0 10px 10px 0;
@@ -215,7 +222,7 @@ header h1
     align-items: center;
     justify-content: center;
     gap: 20px;
-    background-color: rgba(1, 70, 1, 0.699);
+    background-color: rgb(1, 70, 1);
     margin: 20px;
     border-radius: 20px;
     text-align: center;
@@ -549,4 +556,11 @@ header h1
     {
         padding: 15px 15px 25px;
     }
+}
+
+footer
+{
+    background-color: rgba(1, 70, 1, 0.699);
+    text-align: center;
+    color: aquamarine;
 }
