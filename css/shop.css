@@ -41,10 +41,11 @@
 /*stock*/
 #stock
 {
-    margin: 40px 0;
-    padding: 30px 10px;
+    margin: 40px 50px;
+    padding: 40px 10px;
     text-align: center;
     background-color: aquamarine;
+    border-radius: 25px;
 }
 
 #stock h2

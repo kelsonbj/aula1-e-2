@@ -5,6 +5,7 @@
    --sombra: rgb(19, 39, 32);
    --verde-escuro: rgb(1, 70, 1);
    --painel: rgba(3, 146, 99, 0.815);
+   
 }
 
 *
@@ -88,7 +89,10 @@ main
 {
    text-align: center;
    background: url(../img/fundo.jpg);
-   padding: 10px 0;
+   background-size: cover;
+   background-position:top right bottom left;
+   background-repeat: no-repeat;
+   padding-top: 20px;
 }
 
 /* carrossel e formulário lado a lado; quando não cabem, passam para baixo um do outro */
@@ -117,6 +121,7 @@ main
 {
    background-color: aquamarine;
    margin: 10px;
+   border-radius: 25px;
 }
 
 .carrossel-img img
@@ -253,6 +258,11 @@ footer
    width: 100%;
    height: auto;
    padding: 10px;
+}
+
+footer p
+{
+   color: aqua;
 }
 
 /* --- RESPONSIVIDADE --- */
